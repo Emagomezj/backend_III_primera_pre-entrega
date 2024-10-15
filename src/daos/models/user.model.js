@@ -38,4 +38,12 @@ const userSchema = new Schema({
         type: [String],
         default: []
     }
+}, {
+    timestamps: true,
 })
+
+userSchema.plugin(paginate)
+
+const User = model("users", userSchema);
+
+export default User;
