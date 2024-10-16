@@ -1,5 +1,6 @@
 import { Schema, model } from "mongoose";
 import paginate from "mongoose-paginate-v2";
+import { USER } from "../../constants/roles.constant";
 
 const userSchema = new Schema({
     name: {
@@ -30,9 +31,9 @@ const userSchema = new Schema({
 
     },
     roles: {
-        type: String,
+        type: [String],
         uppercase: true,
-        default: "user"
+        default: [USER]
     },
     pets: {
         type: [String],

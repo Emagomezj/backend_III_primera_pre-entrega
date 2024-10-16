@@ -1,5 +1,6 @@
 import mongoose, { Schema, model } from "mongoose";
 import paginate from "mongoose-paginate-v2";
+import { paths } from "../../utils";
 
 const petSchema = new Schema({
     name: {
@@ -18,7 +19,8 @@ const petSchema = new Schema({
         ref: 'users'
     },
     thumbnail: {
-        type: String
+        type: String,
+        default: paths.default_pet_thumbnail
     },
 },{
     timestamps: true
