@@ -1,11 +1,11 @@
-import { NOT_FOUND } from "../constants/messages.constant"
+import { NOT_FOUND } from "../constants/messages.constant.js"
 
 export default class BaseDAO{
     #model
 
-    constructor(model, field){
+    constructor(model, paramField){
         this.#model = model
-        const field = field ?? null
+        const field = paramField ?? null
     }
 
     async getAll(filters, params, field){
@@ -23,8 +23,14 @@ export default class BaseDAO{
         return await this.#model.paginate(filters, options)
     }
 
-    async getOneById(id){
-        return await this.#model.findById(id)
+    async getOneById(id,populateField){
+
+        if(populateField){
+            return await this.#model.findById(id).populate(populateField)
+        } else {
+            return await this.#model.findById(id)
+        }
+
     }
 
     async findOneByCriteria(criteria){
@@ -47,7 +53,13 @@ export default class BaseDAO{
                 });
             }
         } else {
-            object = new this.#model(data);
+            const newObject = {}
+            Object.keys(data).forEach((key) => {
+                if (data[key] !== undefined && data[key] !== null) {
+                    newObject[key] = data[key];
+                }
+            });
+            object = new this.#model(newObject);
         }
         return object.save()
     }

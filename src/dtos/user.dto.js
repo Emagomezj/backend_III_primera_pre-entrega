@@ -1,4 +1,4 @@
-import { hasher } from "../utils";
+import { hasher } from "../utils/index.js";
 
 
 export class UserDTO{
@@ -13,12 +13,13 @@ export class UserDTO{
     }
 
     data(data){
+        console.log(data)
         return {
             id: data.id || null,
             name: data.name,
             surname: data.surname,
             email: data.email,
-            password: data.password ? hasher(password) : null,
+            password: data.password ? hasher(data.password) : null,
             roles: data.roles,
             pets: data.pets || null
         }

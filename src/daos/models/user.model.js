@@ -1,6 +1,6 @@
-import { Schema, model } from "mongoose";
+import mongoose, { Schema, model } from "mongoose";
 import paginate from "mongoose-paginate-v2";
-import { USER } from "../../constants/roles.constant";
+import { USER } from "../../constants/roles.constant.js";
 
 const userSchema = new Schema({
     name: {
@@ -15,7 +15,6 @@ const userSchema = new Schema({
         uppercase: true,
         required: [true, "El apellido es obligatorio"],
         minLength: [3, "El apellido debe tener al menos tres caracteres"],
-        maxLength: [20, "El apellido no puede tener más de 20 caracteres"]
     },
     email: {
         type: String,
@@ -33,12 +32,12 @@ const userSchema = new Schema({
     roles: {
         type: [String],
         uppercase: true,
-        default: [USER]
+        default: [USER],
     },
-    pets: {
-        type: [String],
-        default: []
-    }
+    pets: [{
+        type: mongoose.Types.ObjectId,
+        ref: "pets"
+    }]
 }, {
     timestamps: true,
 })

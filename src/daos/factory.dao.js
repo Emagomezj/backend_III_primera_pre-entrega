@@ -1,7 +1,7 @@
-import User from "./models/user.model";
-import Pet from "./models/pet.model";
-import Adoption from "./models/adoption.model";
-import BaseDAO from "./base.dao";
+import User from "./models/user.model.js";
+import Pet from "./models/pet.model.js";
+import Adoption from "./models/adoption.model.js";
+import BaseDAO from "./base.dao.js";
 
 export default class FactoryDAO {
     userDAO() {

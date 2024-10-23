@@ -1,11 +1,15 @@
 import mongoose, { Schema, model } from "mongoose";
 import paginate from "mongoose-paginate-v2";
-import { paths } from "../../utils";
+import { paths } from "../../utils/index.js";
 
 const petSchema = new Schema({
     name: {
         type: String,
         required: [true, "El nombre de la mascota es obligatorio"]
+    },
+    specie: {
+        type: String,
+        required: [true, "La especie de la mascota es obligatoria"]
     },
     adopted: {
         type: Boolean,
@@ -20,7 +24,7 @@ const petSchema = new Schema({
     },
     thumbnail: {
         type: String,
-        default: paths.default_pet_thumbnail
+        default: "default_pet.svg"
     },
 },{
     timestamps: true

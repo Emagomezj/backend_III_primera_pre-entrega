@@ -1,12 +1,12 @@
 import bcrypt from "bcrypt";
 
 export const hasher = (password) => {
-    password = String(password)
+    const pwd = String(password)
     const salt = bcrypt.genSaltSync(15);
-    return bcrypt.hashSync(password, salt);
+    return bcrypt.hashSync(pwd, salt);
 };
 
 export const passwordValidator = (password, hash) => {
-    password = String(password);
-    return bcrypt.compareSync(password, hash);
+    const pwd = String(password);
+    return bcrypt.compareSync(pwd, hash);
 };
