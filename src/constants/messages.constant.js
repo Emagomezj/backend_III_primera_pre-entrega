@@ -5,6 +5,7 @@ export const NOT_FOUND_CREDENTIALS = "No se han encontrado usuarios con los dato
 export const BAD_REQUEST = "Error en la sintaxis o los datos ingresados";
 export const ERROR_SERVER = "Hubo un error en el Servidor" ;
 export const ERROR_NOT_FOUND_URL = "URL no encontrada" ;
+export const ERROR_ALREADY_ADOPTED = "La mascota ya ha sido adoptada por otro usuario"
 
 export const ERROR_INVALID_ID = "ID inválido" ;
 export const ERROR_NOT_FOUND_ID = "ID no encontrado" ;
@@ -34,4 +35,5 @@ export const STATUS_CODES = {
     [ERROR_NOT_FOUND_ID]: 404,
     [NOT_FOUND]: 404,
     [ERROR_NOT_FOUND_INDEX]: 404,
+    [ERROR_ALREADY_ADOPTED]: 409,
 };

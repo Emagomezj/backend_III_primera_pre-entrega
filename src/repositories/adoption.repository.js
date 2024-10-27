@@ -18,10 +18,10 @@ export default class AdoptionRepository{
         const $and = [];
 
         if(params?.owner){
-            $and.push({owner: {$eq: params.owner}})
+            $and.push({owner: {$eq: params.oid}})
         };
         if(params?.pet){
-            $and.push({pet: {$eq: params.pet}})
+            $and.push({pet: {$eq: params.pid}})
         };
         const filters = $and.length > 0 ? {$and} : {}
         const adoptions = await this.#adoptionDAO.getAll(filters, params);

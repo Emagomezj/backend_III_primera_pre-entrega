@@ -47,7 +47,7 @@ export default class BaseRouter {
         const pattern = /^[0-9a-fA-F]{24}$/;
 
         this.#router.param("id", this.#validatePathParam(pattern, ERROR_INVALID_ID));
-        this.#router.param("cid", this.#validatePathParam(pattern, ERROR_INVALID_ID));
+        this.#router.param("oid", this.#validatePathParam(pattern, ERROR_INVALID_ID));
         this.#router.param("pid", this.#validatePathParam(pattern, ERROR_INVALID_ID));
     }
 
